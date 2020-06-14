@@ -1,4 +1,4 @@
-function submit()
+        function submit()
   addpath('./lib');
 
   conf.assignmentSlug = 'logistic-regression';

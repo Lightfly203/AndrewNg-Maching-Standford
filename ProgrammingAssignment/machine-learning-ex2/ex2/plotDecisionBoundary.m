@@ -14,6 +14,7 @@ hold on
 
 if size(X, 2) <= 3
     % Only need 2 points to define a line, so choose two endpoints
+    %To define x & y axis
     plot_x = [min(X(:,2))-2,  max(X(:,2))+2];
 
     % Calculate the decision boundary line

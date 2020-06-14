@@ -6,7 +6,6 @@
 %  This file contains code that helps you get started on the logistic
 %  regression exercise. You will need to complete the following functions 
 %  in this exericse:
-%
 %     sigmoid.m
 %     costFunction.m
 %     predict.m
@@ -80,6 +79,7 @@ fprintf('\nCost at test theta: %f\n', cost);
 fprintf('Expected cost (approx): 0.218\n');
 fprintf('Gradient at test theta: \n');
 fprintf(' %f \n', grad);
+
 fprintf('Expected gradients (approx):\n 0.043\n 2.566\n 2.647\n');
 
 fprintf('\nProgram paused. Press enter to continue.\n');

@@ -62,7 +62,90 @@
    - $J(\theta)=\frac{1}{m}\sum_{i=1}^{m}[-y^ilog(h_\theta)-(1-y^i)log(1-h_\theta)]+\frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2$
    - 梯度下降函数与Linear Regression形式上一致
 
-## 三、Week3 习题
+## 三、Week3 编程练习
 
 1. Logistic Regression
-   1. ​
+   1. Visuralizing the data
+
+      Function `plot(x,y,color,style...)`
+
+      `plot`函数提供的可选线属性如下表
+
+      ![img](file:///F:/AndrewNg/Picture/Snipaste_2020-06-13_21-02-46.png?lastModify=1592053460?lastModify=1592053698)
+
+      可选全局属性如下
+
+      ​	LineWidth——指定线宽
+
+      ​	MarkerEdgeColor——指定标识符的边缘颜色
+
+      ​	MarkerFaceColor——指定标识符填充颜色
+
+      ​	MarkerSize——指定标识符的大小
+
+      - Find函数
+
+        - Find(X)找到X为真的结果，元素顺序按列排序
+        - [row,col] = find(X>0 & X<10,3)，找到矩阵中满足条件得前三个元素，输出[row,col]坐标
+
+      - size
+
+        - 一个返回值返回行、列，向量返回
+
+        - size(A,n)
+
+          如果在size函数的输入参数中再添加一项n，并用1或2为n赋值，则 size将返回矩阵的行数或列数。其中r=size(A,1)该语句返回的是矩阵A的行数， c=size(A,2) 该语句返回的是矩阵A的列数
+
+      - ones（a，b）
+
+        - 输出一个a*b的全1矩阵
+
+      - fminunc Matlab自带的一个高级函数，可以找到最好的$\theta$
+
+      - contour
+
+        - 绘制等高线函数
+
+      - Legend
+
+        - 给画出的图像放上图例
+
+      - Linspace（1，100，2）
+
+        - 产生等差数列
+
+      - matlab逻辑判断为真即可赋值=1
+
+   2. 特别注意，在我编写代码的过程中对于矩阵的转置几次没有仔细查看，导致计算结果错误，这种错有时不会报错，但是你本想获得一个标量，会得到一个矢量；本想获得矢量，变成了标量，这是我对自己很大的一个收获
+
+   3. 参考代码
+
+      1. 写出S函数
+
+         ```g=1./(1+exp(-z));
+         g=1./(1+exp(-z));
+         ```
+
+      2. 求代价函数和相应的$\theta$导数
+
+         ```
+         J=(-y'*log(sigmoid(X*theta))-(1-y)'*log(1-sigmoid(X*theta)))/m;
+         grad = (sigmoid(X*theta)-y)'*X/m;
+         ```
+
+      3. 对模拟数值，求出大于一的预测量
+
+         ```
+         p = sigmoid(X*theta)>=0.5;
+         ```
+
+      4. 求正则化后的逻辑回归代价函数以及相应的$\theta$导数
+
+
+         ```
+         J=(-y'*log(sigmoid(X*theta))-(1-y)'*log(1-sigmoid(X*theta)))/m+lambda*sum(theta(2:size(theta),:).^2)/(2*m);
+         grad(2:n)= (sigmoid(X*theta)-y)'*X(:,2:n)/m+lambda*theta(2:n)'/m;
+         grad(1)= (sigmoid(X*theta)-y)'*X(:,1)/m;
+         ```
+
+         ​
